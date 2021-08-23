@@ -11,7 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxsModule } from '@ngxs/store/';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
-import { MainState } from './state/main.state';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 
 @NgModule({
   declarations: [
@@ -27,11 +27,11 @@ import { MainState } from './state/main.state';
     MatFormFieldModule,
     MatInputModule,
     NgxsModule.forRoot([
-      MainState
-    ]),
+    ], { developmentMode: true }),
     NgxsStoragePluginModule.forRoot({
       key: ['userToken']
-    })
+    }),
+    NgxsReduxDevtoolsPluginModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
